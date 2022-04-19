@@ -41,5 +41,7 @@ module DgmsNewsApi
       generate.controller_specs false
       generate.request_specs false
     end
+    config.stripe.publishable_key = Rails.application.credentials.dig(:stripe, :publishable_key)
+    config.stripe.secret_key= Rails.application.credentials.dig(:stripe, :secret_key)
   end
 end

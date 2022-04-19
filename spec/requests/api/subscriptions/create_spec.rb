@@ -1,12 +1,15 @@
+require 'stripe_mock'
 RSpec.describe 'POST /api/subscriptions', type: :request do
   let(:user) { create(:user) }
   let(:credentials) { user.create_new_auth_token }
+
+  before(:each) {StripeMock.start}
 
   subject { response }
 
   describe 'as a authenticated user' do
     before do
-      post '/api/subscriptions', headers: credentials
+      post '/api/subscriptions', params: { stripeToken: StripeMock.create_test_helper.generate_card_token, amount: 200 } , headers: credentials
     end
 
     it { is_expected.to have_http_status 201 }

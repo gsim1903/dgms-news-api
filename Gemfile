@@ -11,6 +11,7 @@ gem "puma", "~> 5.0"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "rack-cors", require: "rack/cors"
 gem "devise_token_auth"
+gem 'stripe-rails'
 
 group :development, :test do
   gem "rspec-rails"
@@ -19,6 +20,7 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
   gem 'simplecov', require:false
+  gem 'stripe-ruby-mock', '~> 3.1.0.rc2'
 end
 
 group :development do
